@@ -1,0 +1,60 @@
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+hr{
+    margin: 0;
+}
+div>div>table{
+    width: 70%;
+    margin: 0;
+    border-spacing: 0;
+}
+td > p{
+    margin: 0;
+} 
+#TextoCentral{
+    text-align: left;
+    background: white;
+    width: 100%;
+    position: fixed;
+}
+#btn{
+    text-align: right;
+    right: 0;
+    padding: 0.75%;
+    position: fixed;
+    background-color: green;
+    border-radius: 10px;
+    color: white;
+}
+#btn2{
+    text-align: right;
+    right: 0;
+    padding: 0.75%;
+    position: fixed;
+    right: 11%;
+    background-color: gray;
+    border-radius: 10px;
+    color: white;
+}
+#lateral{
+    float: left;
+    width: auto;
+}
+#meio{
+    float: left;
+}
+#blocos1{
+    float: left;
+    width: auto;
+    overflow: auto;
+}
+#blocos2{
+    float: right;
+    width: auto;
+    right: 0;
+    overflow: auto;
+}
