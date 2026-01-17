@@ -1,14 +1,23 @@
+/* Base */
 html, body{
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
 }
+
+:root{
+    --header-height: 64px;
+    --sidebar-width: 300px;
+    --gap: 12px;
+}
+
+*{ box-sizing: border-box; }
 hr{
     margin: 0;
 }
 div>div>table{
-    width: 70%;
+    width: 100%;
     margin: 0;
     border-spacing: 0;
 }
@@ -16,45 +25,356 @@ td > p{
     margin: 0;
 } 
 #TextoCentral{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
     text-align: left;
     background: white;
     width: 100%;
     position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
-#btn{
-    text-align: right;
-    right: 0;
-    padding: 0.75%;
-    position: fixed;
-    background-color: green;
+
+#logo{
+    height: 44px;
+    width: auto;
+    max-width: 55vw;
+}
+
+#acoesTopo{
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Botões (mantendo <b> por compatibilidade com o JS existente) */
+#btn,
+#btnDownload,
+#btnSimular,
+#btnValidar{
+    display: inline-block;
+    padding: 10px 12px;
     border-radius: 10px;
     color: white;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
 }
-#btn2{
-    text-align: right;
-    right: 0;
-    padding: 0.75%;
-    position: fixed;
-    right: 11%;
-    background-color: gray;
-    border-radius: 10px;
+#btn{ background-color: green; }
+#btnDownload{ background-color: #1d6fd6; }
+#btnSimular{ background-color: #6b2bd6; }
+#btnValidar{ background-color: #d65a1d; }
+
+/* Lixeira (drop zone) */
+#trashBin{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #f2f2f2;
+    border: 2px dashed #c7c7c7;
+    cursor: pointer;
+    user-select: none;
+    font-size: 20px;
+    line-height: 1;
+}
+#trashBin.pb-trash--over{
+    background: #ffe9e9;
+    border-color: #e08a8a;
+}
+
+/* Blocos menores */
+#lateral p{
+    width: 88% !important;
+    padding: 8px 10px !important;
+    margin-bottom: 8px !important;
+    font-size: 12px;
+}
+
+#lateral table p{
+    width: 100% !important;
+    padding: 6px 8px !important;
+    margin-bottom: 6px !important;
+}
+
+/* Blocos do workspace */
+.pb-wblock{
+    display: block;
+    padding: 10px 12px !important;
+    border-radius: 10px !important;
+    margin: 0 0 10px 0 !important;
     color: white;
+    font-size: 12px;
+    cursor: grab;
+    user-select: none;
 }
+.pb-wblock:active{ cursor: grabbing; }
+.pb-wblock.pb-drop-target{ outline: 2px dashed rgba(0,0,0,0.25); outline-offset: 2px; }
+
+/* Layout principal */
+#app{
+    padding-top: var(--header-height);
+    min-height: 100vh;
+}
+
+#content{
+    display: flex;
+    gap: var(--gap);
+    padding: var(--gap);
+    align-items: flex-start;
+}
+
 #lateral{
-    float: left;
-    width: auto;
+    flex: 0 0 var(--sidebar-width);
+    max-width: var(--sidebar-width);
+    overflow: auto;
+    max-height: calc(100vh - var(--header-height) - (2 * var(--gap)));
+    padding-right: 6px;
 }
+
+/* Sidebar: compactar botões/blocos */
+#lateral p{
+    padding: 8px 10px !important;
+    width: 92% !important;
+    font-size: 12px;
+    line-height: 1.1;
+}
+
+/* Área de blocos: cada bloco vira um item arrastável */
+.pb-wblock{
+    padding: 10px 12px !important;
+    border-radius: 12px;
+    margin: 0 0 8px 0;
+    font-size: 13px;
+    line-height: 1.2;
+    cursor: grab;
+    user-select: none;
+}
+.pb-wblock:active{ cursor: grabbing; }
+.pb-wblock.pb-drop-target{ outline: 3px dashed rgba(0,0,0,.18); outline-offset: 2px; }
+
+/* Faz as cores existentes funcionarem com .pb-wblock também */
+.pb-wblock.laranja, .pb-wblock.laranja2, .pb-wblock.verde, .pb-wblock.azul, .pb-wblock.rosa, .pb-wblock.cinza, .pb-wblock.amarelo{
+    width: auto !important;
+}
+
 #meio{
-    float: left;
+    flex: 1 1 auto;
+    min-width: 0;
+    display: flex;
+    gap: var(--gap);
 }
-#blocos1{
-    float: left;
-    width: auto;
+
+#blocos1,
+#blocos2{
+    flex: 1 1 0;
+    min-width: 280px;
+    overflow: auto;
+    max-height: calc(100vh - var(--header-height) - (2 * var(--gap)));
+}
+
+/* Responsividade */
+@media (max-width: 980px){
+    :root{ --sidebar-width: 260px; }
+}
+
+@media (max-width: 768px){
+    :root{ --header-height: 92px; }
+
+    #TextoCentral{
+        align-items: flex-start;
+        flex-direction: column;
+    }
+    #acoesTopo{
+        margin-left: 0;
+        width: 100%;
+        justify-content: flex-start;
+    }
+    #btn,
+    #btnDownload,
+    #btnSimular,
+    #btnValidar{
+        width: 100%;
+        text-align: center;
+    }
+
+    #trashBin{ width: 100%; }
+
+    #content{
+        flex-direction: column;
+    }
+
+    #lateral{
+        flex: 1 1 auto;
+        max-width: 100%;
+        max-height: 40vh;
+        padding-right: 0;
+        border-top: 1px solid #eee;
+    }
+
+    #meio{
+        flex-direction: column;
+    }
+    #blocos1,
+    #blocos2{
+        min-width: 0;
+        max-height: 45vh;
+    }
+}
+
+/* ------------------------------
+   Modal (Simulador + Validação)
+------------------------------ */
+.pb-hidden{ display: none; }
+
+.pb-modal{
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+}
+
+.pb-modal__backdrop{
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+}
+
+.pb-modal__panel{
+    position: relative;
+    margin: 24px auto;
+    width: min(1100px, calc(100% - 24px));
+    max-height: calc(100vh - 48px);
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.pb-modal__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border-bottom: 1px solid #eee;
+}
+
+.pb-modal__title{
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.pb-modal__x{
+    border: 0;
+    background: transparent;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 10px;
+}
+.pb-modal__x:hover{ background: #f2f2f2; }
+
+.pb-modal__controls{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.pb-modal__controls button,
+.pb-modal__controls select{
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+}
+
+.pb-modal__controls button:hover{ background: #f7f7f7; }
+
+.pb-modal__speed{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    font-size: 14px;
+}
+
+.pb-modal__grid{
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 14px;
     overflow: auto;
 }
-#blocos2{
-    float: right;
+
+.pb-modal__sectionTitle{
+    font-weight: 700;
+    margin: 0 0 8px;
+}
+
+.pb-modal__code,
+.pb-modal__vars,
+.pb-modal__out{
+    margin: 0;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    background: #fafafa;
+    overflow: auto;
+    min-height: 140px;
+    line-height: 1.45;
+}
+
+.pb-modal__hint{
+    margin-top: 10px;
+    font-size: 12px;
+    color: #444;
+}
+
+/* Linhas do código com numeração + destaque */
+.pb-line{ display: block; padding: 2px 6px; border-radius: 8px; }
+.pb-line__no{ display:inline-block; width: 36px; opacity: .6; user-select:none; }
+.pb-line--active{ background: #fff0c9; }
+
+@media (max-width: 768px){
+    .pb-modal__grid{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 420px){
+    :root{ --gap: 10px; }
+    #logo{ max-width: 90vw; }
+}
+/* Tokens (operadores) no workspace: menores e mais "inline" */
+.pb-token{
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 10px;
     width: auto;
-    right: 0;
+    min-width: 0;
+    min-height: 0;
+    margin: 3px;
+    font-size: 14px;
+    line-height: 1.1;
+}
+
+/* Pré-visualização do código */
+.pb-code-preview{
+    white-space: pre-wrap;
+    word-break: break-word;
+    padding: 12px;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    max-height: 70vh;
     overflow: auto;
 }

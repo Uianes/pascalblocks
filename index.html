@@ -2,6 +2,7 @@
     <html>
         <head>
             <meta charset="utf-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="stylesheet" type="text/css" href="css/estilo.css">
             <link rel="stylesheet" type="text/css" href="css/blocosPrograma.css">
             <link rel="stylesheet" type="text/css" href="css/blocosVariaveis.css">
@@ -12,23 +13,29 @@
             <link rel="stylesheet" type="text/css" href="css/blocosRepeticao.css">
         </head>
         <body>
-            <div>
+            <div id="app">
             <!--Faixa superior-->
             <div id="TextoCentral">
-                <img src="img/pascalblocks.png" width="25%">
-                <b id="btn">Visualizar código!</b>
-                <b id="btn2">Apagar último bloco!</b>
+                <img src="img/pascalblocks.png" alt="PascalBlocks" id="logo">
+                <div id="acoesTopo">
+                    <b id="btn">Visualizar código!</b>
+                    <div id="trashBin" title="Arraste um bloco aqui para apagar" aria-label="Lixeira">🗑️</div>
+                    <b id="btnDownload">Baixar código</b>
+                    <b id="btnSimular">Simulador</b>
+                    <b id="btnValidar">Validar</b>
+                </div>
                 <hr>
             </div>
             <!--Fim da Faixa superior-->
+
+            <div id="content">
            <!--Menu lateral de blocos-->
-           <br>
-           <br>
            <div id="lateral">
                <br>
                 <p id="program"><b>Program</b></p>
                 <p id="usescrt"><b>Uses CRT;</b></p>
                 <p id="begin"><b>Begin</b></p>
+                <p id="end0"><b>End</b></p>
                 <p id="end1"><b>End;</b></p>
                 <p id="end2"><b>End.</b></p>
                 <br>
@@ -137,7 +144,75 @@
                    
                 </div>
         </div>
+        </div><!-- /#content -->
+    </div><!-- /#app -->
+
+    <!-- Modal do Simulador (passo a passo) -->
+    <div id="simModal" class="pb-modal pb-hidden" role="dialog" aria-modal="true" aria-label="Simulador passo a passo">
+        <div class="pb-modal__backdrop" id="simClose"></div>
+        <div class="pb-modal__panel">
+            <div class="pb-modal__header">
+                <div class="pb-modal__title">Simulador passo a passo</div>
+                <button class="pb-modal__x" id="simCloseBtn" aria-label="Fechar">✕</button>
+            </div>
+
+            <div class="pb-modal__controls">
+                <button id="simReset">Reiniciar</button>
+                <button id="simPrev">Anterior</button>
+                <button id="simNext">Próximo</button>
+                <button id="simPlay">▶</button>
+                <label class="pb-modal__speed">
+                    Velocidade
+                    <select id="simSpeed">
+                        <option value="1200">Lento</option>
+                        <option value="700" selected>Médio</option>
+                        <option value="350">Rápido</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="pb-modal__grid">
+                <div class="pb-modal__col">
+                    <div class="pb-modal__sectionTitle">Código</div>
+                    <pre id="simCode" class="pb-modal__code"></pre>
+                    <div class="pb-modal__hint">Dica: o simulador executa os blocos em sequência. Nesta versão (MVP), estruturas como IF/WHILE/FOR/REPEAT/CASE são exibidas e avançam, mas ainda não controlam o fluxo.</div>
+                </div>
+                <div class="pb-modal__col">
+                    <div class="pb-modal__sectionTitle">Variáveis</div>
+                    <pre id="simVars" class="pb-modal__vars"></pre>
+
+                    <div class="pb-modal__sectionTitle">Saída (Writeln)</div>
+                    <pre id="simOut" class="pb-modal__out"></pre>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Modal da Validação semântica -->
+    <div id="valModal" class="pb-modal pb-hidden" role="dialog" aria-modal="true" aria-label="Validação semântica">
+        <div class="pb-modal__backdrop" id="valClose"></div>
+        <div class="pb-modal__panel">
+            <div class="pb-modal__header">
+                <div class="pb-modal__title">Validação semântica</div>
+                <button class="pb-modal__x" id="valCloseBtn" aria-label="Fechar">✕</button>
+            </div>
+            <div class="pb-modal__controls">
+                <button id="valRevalidar">Revalidar</button>
+                <button id="valCopiar">Copiar relatório</button>
+                <div class="pb-modal__speed" style="margin-left:auto;">
+                    <span id="valResumo"></span>
+                </div>
+            </div>
+            <div class="pb-modal__grid" style="grid-template-columns: 1fr;">
+                <div class="pb-modal__col">
+                    <div class="pb-modal__sectionTitle">Relatório</div>
+                    <pre id="valReport" class="pb-modal__code"></pre>
+                    <div class="pb-modal__hint">A validação tenta identificar problemas comuns (ex.: begin/end, ;, variáveis não declaradas). Pode haver falsos positivos em programas mais avançados.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/elementos.js"></script>
     <script src="js/blocks.js"></script>
     </body>
