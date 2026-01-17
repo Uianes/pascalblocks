@@ -5,6 +5,15 @@
 O projeto foi desenvolvido com foco **didático**, buscando reduzir as barreiras iniciais no aprendizado de programação, sem abrir mão do rigor conceitual exigido por linguagens textuais tradicionais.
 
 ---
+## Para acessar:
+
+🔗 **Link 1**  
+https://pascalblocks.netlify.app/
+
+🔗 **Link 2**  
+https://uianes.github.io/pascalblocks/
+
+---
 
 ## 🎯 Objetivos do Projeto
 
