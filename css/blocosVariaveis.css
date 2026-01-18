@@ -1,44 +1,44 @@
-#variaveis{
-    background-color: darkolivegreen;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#variaveis {
+  background-color: darkolivegreen;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#novavar{
-    background-color: darkolivegreen;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#novavar {
+  background-color: darkolivegreen;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#novovalorvar{
-    background-color: darkolivegreen;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#novovalorvar {
+  background-color: darkolivegreen;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-.verde{
-    background-color: darkolivegreen;
-    margin: 0;
-    padding: 15%;
-    width: auto;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+.verde {
+  background-color: darkolivegreen;
+  margin: 0;
+  padding: 15%;
+  width: auto;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }

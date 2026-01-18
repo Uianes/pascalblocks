@@ -1,77 +1,77 @@
-#usescrt{
-    background-color: coral;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#usescrt {
+  background-color: coral;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#begin{
-    background-color: coral;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#begin {
+  background-color: coral;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#end1{
-    background-color: coral;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#end1 {
+  background-color: coral;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#end0{
-    background-color: coral;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#end0 {
+  background-color: coral;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#end2{
-    background-color: coral;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#end2 {
+  background-color: coral;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#program{
-    background-color: coral;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#program {
+  background-color: coral;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-.laranja{
-    background-color: coral;
-    margin: 0;
-    padding: 10%;
-    width: auto;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+.laranja {
+  background-color: coral;
+  margin: 0;
+  padding: 10%;
+  width: auto;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
