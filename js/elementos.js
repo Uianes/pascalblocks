@@ -1,51 +1,51 @@
 //Pegar todos os elementos do CSS.
-var a = window.document.getElementById('program')
-var b = window.document.getElementById('usescrt')
-var c = window.document.getElementById('begin')
-var c0 = window.document.getElementById('end0')
-var d = window.document.getElementById('end1')
-var e = window.document.getElementById('end2')
-var f = window.document.getElementById('variaveis')
-var g = window.document.getElementById('novavar')
-var h = window.document.getElementById('novovalorvar')
-var i = window.document.getElementById('entrada')
-var j = window.document.getElementById('saida')
-var k = window.document.getElementById('entradaDados')
-var l = window.document.getElementById('igualdade')
-var m = window.document.getElementById('diferenca')
-var n = window.document.getElementById('maior')
-var o = window.document.getElementById('menor')
-var p = window.document.getElementById('nao')
-var q = window.document.getElementById('ee')
-var r = window.document.getElementById('ou')
-var s = window.document.getElementById('dv')
-var t = window.document.getElementById('aspas')
-var u = window.document.getElementById('apostrofe')
-var v = window.document.getElementById('pontoevirgula')
-var w = window.document.getElementById('virgula')
-var x = window.document.getElementById('mod')
-var y = window.document.getElementById('parentese1')
-var z = window.document.getElementById('parentese2')
-var a1 = window.document.getElementById('clrscr') 
-var b1 = window.document.getElementById('saidacomvar')
-var c1 = window.document.getElementById('sqr')
-var d1 = window.document.getElementById('sqrt')
-var e1 = window.document.getElementById('condicionalsimples')
-var g1 = window.document.getElementById('condicionalsenao')
-var h1 = window.document.getElementById('condicionalcase')
-var i1 = window.document.getElementById('caseopcao')
-var j1 = window.document.getElementById('enquanto')
-var l1 = window.document.getElementById('repita')
-var m1 = window.document.getElementById('until')
-var n1 = window.document.getElementById('para')
-var p1 = window.document.getElementById('btn')
+const blockProgram = window.document.getElementById('program');
+const blockUsesCrt = window.document.getElementById('usescrt');
+const blockBegin = window.document.getElementById('begin');
+const blockEndProgram = window.document.getElementById('end0');
+const blockEnd = window.document.getElementById('end1');
+const blockEndIf = window.document.getElementById('end2');
+const blockVariaveis = window.document.getElementById('variaveis');
+const blockNovaVar = window.document.getElementById('novavar');
+const blockNovoValorVar = window.document.getElementById('novovalorvar');
+const blockEntrada = window.document.getElementById('entrada');
+const blockSaida = window.document.getElementById('saida');
+const blockEntradaDados = window.document.getElementById('entradaDados');
+const opIgualdade = window.document.getElementById('igualdade');
+const opDiferenca = window.document.getElementById('diferenca');
+const opMaior = window.document.getElementById('maior');
+const opMenor = window.document.getElementById('menor');
+const opNao = window.document.getElementById('nao');
+const opE = window.document.getElementById('ee');
+const opOu = window.document.getElementById('ou');
+const opDivisao = window.document.getElementById('dv');
+const symAspas = window.document.getElementById('aspas');
+const symApostrofo = window.document.getElementById('apostrofe');
+const symPontoEVirgula = window.document.getElementById('pontoevirgula');
+const symVirgula = window.document.getElementById('virgula');
+const opMod = window.document.getElementById('mod');
+const symParenteseEsq = window.document.getElementById('parentese1');
+const symParenteseDir = window.document.getElementById('parentese2');
+const fnClrscr = window.document.getElementById('clrscr');
+const fnSaidaComVar = window.document.getElementById('saidacomvar');
+const fnSqr = window.document.getElementById('sqr');
+const fnSqrt = window.document.getElementById('sqrt');
+const blockCondicionalSimples = window.document.getElementById('condicionalsimples');
+const blockCondicionalSenao = window.document.getElementById('condicionalsenao');
+const blockCondicionalCase = window.document.getElementById('condicionalcase');
+const blockCaseOpcao = window.document.getElementById('caseopcao');
+const blockEnquanto = window.document.getElementById('enquanto');
+const blockRepita = window.document.getElementById('repita');
+const blockUntil = window.document.getElementById('until');
+const blockPara = window.document.getElementById('para');
+const btnGerar = window.document.getElementById('btn');
 // btn2 removido; agora usamos lixeira drag'n'drop
-var q1 = null
-var trashBin = window.document.getElementById('trashBin')
-var r1 = window.document.getElementById('btnDownload')
-var t1 = window.document.getElementById('btnSimular')
-var u1 = window.document.getElementById('btnValidar')
-var s1 = window.document.getElementById('senaose')
+const trashBin = window.document.getElementById('trashBin');
+const btnDownload = window.document.getElementById('btnDownload');
+const btnSimular = window.document.getElementById('btnSimular');
+const btnValidar = window.document.getElementById('btnValidar');
+const btnLimpar = window.document.getElementById('btnLimpar');
+const blockSenaoSe = window.document.getElementById('senaose');
 
 // ------------------------------
 // Responsividade (melhor em mobile)
@@ -53,16 +53,16 @@ var s1 = window.document.getElementById('senaose')
 // O header (#TextoCentral) é position:fixed e pode variar de altura (por exemplo,
 // quando os botões do topo quebram linha em telas menores). Para o layout não
 // "pular" nem cortar conteúdo, atualizamos a CSS var --header-height dinamicamente.
-function atualizarAlturaHeader(){
-    var header = document.getElementById('TextoCentral');
-    if(!header) return;
+function atualizarAlturaHeader() {
+    const header = document.getElementById('TextoCentral');
+    if (!header) return;
     document.documentElement.style.setProperty('--header-height', header.offsetHeight + 'px');
 }
 
 // Debounce simples para resize
-var _tResize = null;
-window.addEventListener('resize', function(){
-    if(_tResize) clearTimeout(_tResize);
+let _tResize = null;
+window.addEventListener('resize', function () {
+    if (_tResize) clearTimeout(_tResize);
     _tResize = setTimeout(atualizarAlturaHeader, 80);
 });
 
