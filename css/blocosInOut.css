@@ -1,44 +1,44 @@
-#entrada{
-    background-color: dodgerblue;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#entrada {
+  background-color: dodgerblue;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#saida{
-    background-color: dodgerblue;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#saida {
+  background-color: dodgerblue;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#saidacomvar{
-    background-color: dodgerblue;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#saidacomvar {
+  background-color: dodgerblue;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-.azul{
-    background-color: dodgerblue;
-    margin: 0;
-    padding: 15%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;   
+.azul {
+  background-color: dodgerblue;
+  margin: 0;
+  padding: 15%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }

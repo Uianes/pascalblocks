@@ -1,55 +1,55 @@
-#clrscr{
-    background-color: gray;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#clrscr {
+  background-color: gray;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-.cinza{
-    background-color: gray;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+.cinza {
+  background-color: gray;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#it{
-    background-color: gray;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#it {
+  background-color: gray;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#sqr{
-    background-color: gray;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#sqr {
+  background-color: gray;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
-#sqrt{
-    background-color: gray;
-    margin: 0;
-    padding: 10%;
-    width: 50%;
-    vertical-align: middle;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    margin-bottom: 1%;
+#sqrt {
+  background-color: gray;
+  margin: 0;
+  padding: 10%;
+  width: 50%;
+  vertical-align: middle;
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin-bottom: 1%;
 }
