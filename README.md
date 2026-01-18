@@ -135,3 +135,6 @@ Este projeto é distribuído como **Recurso Educacional Aberto**, podendo ser ut
 Contribuições são bem-vindas!
 
 Sugestões, melhorias pedagógicas, correções ou extensões do projeto podem ser feitas via **Issues** ou **Pull Requests**.
+
+Contribuidores:
+[Diego Breskovit](https://github.com/dbreskovit)
