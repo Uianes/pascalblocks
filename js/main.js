@@ -51,6 +51,9 @@ const blockSenaoSe = window.document.getElementById('senaose');
 import {
   checkWorkspaceEmptyState,
   limparWorkspace,
+  undo,
+  redo,
+  initHistory,
 } from './modules/workspace.js';
 import { wireDnD } from './modules/dnd.js';
 import * as block_actions from './modules/block_actions.js';
@@ -155,6 +158,34 @@ if (btnAcoes && dropdownAcoes) {
 
 wireDnD();
 checkWorkspaceEmptyState();
+initHistory();
+
+// Botões de Undo/Redo
+const btnUndo = window.document.getElementById('btnUndo');
+const btnRedo = window.document.getElementById('btnRedo');
+
+if (btnUndo) btnUndo.addEventListener('click', undo);
+if (btnRedo) btnRedo.addEventListener('click', redo);
+
+// Atalhos de teclado para Undo/Redo
+window.addEventListener('keydown', function (event) {
+  // Ignora se estiver digitando em um input ou textarea
+  if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+    return;
+  }
+  
+  // Ctrl+Z ou Cmd+Z para Undo
+  if ((event.ctrlKey || event.metaKey) && event.key === 'z' && !event.shiftKey) {
+    event.preventDefault();
+    undo();
+  }
+  
+  // Ctrl+Y ou Ctrl+Shift+Z ou Cmd+Shift+Z para Redo
+  if ((event.ctrlKey || event.metaKey) && (event.key === 'y' || (event.key === 'z' && event.shiftKey))) {
+    event.preventDefault();
+    redo();
+  }
+});
 
 function downloadPasBlockFile() {
   const xmlContent = exportBlocksToXml();

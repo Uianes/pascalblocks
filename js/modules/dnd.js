@@ -5,6 +5,7 @@ import {
   pushToken,
   editarBloco,
   checkWorkspaceEmptyState,
+  saveState,
 } from './workspace.js';
 
 var _dragFromIdx = null;
@@ -361,6 +362,7 @@ function wireDnD() {
           for (let i = 0; i < allBlocks.length; i++) {
             allBlocks[i].dataset.idx = String(i);
           }
+          saveState();
         }
       } else if (_dragFromSidebarId !== null) {
         adicionarBlocoPorId(_dragFromSidebarId, toIndex);
@@ -427,6 +429,7 @@ function wireDnD() {
           allBlocks[i].dataset.idx = String(i);
         }
         checkWorkspaceEmptyState();
+        saveState();
       }
       _dragFromIdx = null;
       trash.classList.remove('pb-trash--over');
