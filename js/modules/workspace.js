@@ -1,6 +1,119 @@
 let codigoHTML = [];
 let codigo = [];
 
+// Sistema de histórico para Undo/Redo
+const MAX_HISTORY = 50;
+let history = [];
+let historyIndex = -1;
+let isRestoring = false;
+
+function saveState() {
+  if (isRestoring) return;
+  
+  // Remove estados futuros se estivermos no meio do histórico
+  if (historyIndex < history.length - 1) {
+    history = history.slice(0, historyIndex + 1);
+  }
+  
+  // Salva o estado atual (código e classes dos blocos)
+  const state = codigo.map((code, i) => ({
+    code: code,
+    className: codigoHTML[i] ? codigoHTML[i].className : 'pb-wblock',
+    label: codigoHTML[i] ? codigoHTML[i].textContent : code
+  }));
+  
+  history.push(JSON.stringify(state));
+  
+  // Limita o tamanho do histórico
+  if (history.length > MAX_HISTORY) {
+    history.shift();
+  } else {
+    historyIndex++;
+  }
+  
+  updateUndoRedoButtons();
+}
+
+function canUndo() {
+  return historyIndex > 0;
+}
+
+function canRedo() {
+  return historyIndex < history.length - 1;
+}
+
+function undo() {
+  if (!canUndo()) return;
+  
+  historyIndex--;
+  restoreState(history[historyIndex]);
+  updateUndoRedoButtons();
+}
+
+function redo() {
+  if (!canRedo()) return;
+  
+  historyIndex++;
+  restoreState(history[historyIndex]);
+  updateUndoRedoButtons();
+}
+
+function restoreState(stateJson) {
+  isRestoring = true;
+  
+  const state = JSON.parse(stateJson);
+  const workspace = document.getElementById('blocos1');
+  
+  if (!workspace) {
+    isRestoring = false;
+    return;
+  }
+  
+  // Limpa o workspace atual
+  const blocks = workspace.querySelectorAll('.pb-wblock');
+  blocks.forEach(block => workspace.removeChild(block));
+  
+  codigo = [];
+  codigoHTML = [];
+  
+  // Restaura os blocos
+  state.forEach((item, i) => {
+    const div = document.createElement('div');
+    div.className = item.className;
+    div.textContent = item.label;
+    div.dataset.idx = String(i);
+    div.setAttribute('draggable', 'true');
+    
+    codigo.push(item.code);
+    codigoHTML.push(div);
+    workspace.appendChild(div);
+  });
+  
+  checkWorkspaceEmptyState();
+  isRestoring = false;
+}
+
+function updateUndoRedoButtons() {
+  const btnUndo = document.getElementById('btnUndo');
+  const btnRedo = document.getElementById('btnRedo');
+  
+  if (btnUndo) {
+    btnUndo.classList.toggle('disabled', !canUndo());
+    btnUndo.setAttribute('aria-disabled', !canUndo());
+  }
+  if (btnRedo) {
+    btnRedo.classList.toggle('disabled', !canRedo());
+    btnRedo.setAttribute('aria-disabled', !canRedo());
+  }
+}
+
+function initHistory() {
+  // Salva estado inicial (vazio)
+  history = [];
+  historyIndex = -1;
+  saveState();
+}
+
 function checkWorkspaceEmptyState() {
   const workspace = document.getElementById('blocos1');
   if (!workspace) return;
@@ -71,6 +184,7 @@ function pushBloco(linhaCodigo, classe, rotulo, index) {
     allBlocks[i].dataset.idx = String(i);
   }
   checkWorkspaceEmptyState();
+  saveState();
 }
 
 function pushToken(token, index) {
@@ -108,6 +222,7 @@ function pushToken(token, index) {
     allBlocks[i].dataset.idx = String(i);
   }
   checkWorkspaceEmptyState();
+  saveState();
 }
 
 function editarBloco(index) {
@@ -156,6 +271,7 @@ function editarBloco(index) {
     if (codigoHTML[index]) {
       codigoHTML[index].textContent = newLabel;
     }
+    saveState();
   }
 }
 
@@ -182,6 +298,7 @@ function limparWorkspace() {
     codeView.innerHTML = '';
   }
   checkWorkspaceEmptyState();
+  saveState();
 }
 
 export {
@@ -193,4 +310,10 @@ export {
   pushToken,
   editarBloco,
   limparWorkspace,
+  undo,
+  redo,
+  canUndo,
+  canRedo,
+  initHistory,
+  saveState,
 };
