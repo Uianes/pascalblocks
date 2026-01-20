@@ -138,3 +138,4 @@ Sugestões, melhorias pedagógicas, correções ou extensões do projeto podem s
 
 Contribuidores:
 [Diego Breskovit](https://github.com/dbreskovit)
+[Arthur Willers](https://github.com/ArthurWillers)
