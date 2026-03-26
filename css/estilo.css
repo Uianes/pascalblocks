@@ -276,9 +276,11 @@ td > p {
   box-shadow: var(--shadow-md);
   transform: scale(1.02);
 }
-.pb-wblock.pb-drop-target {
-  outline: 2px dashed var(--primary);
-  outline-offset: 2px;
+.pb-wblock.pb-drop-before {
+  box-shadow: 0 -4px 0 0 var(--primary), var(--shadow) !important;
+}
+.pb-wblock.pb-drop-after {
+  box-shadow: 0 4px 0 0 var(--primary), var(--shadow) !important;
 }
 
 /* Layout principal */

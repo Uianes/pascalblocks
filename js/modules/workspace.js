@@ -176,7 +176,7 @@ function pushBloco(linhaCodigo, classe, rotulo, index) {
   } else {
     codigo.splice(targetIndex, 0, linhaCodigo);
     codigoHTML.splice(targetIndex, 0, elemento);
-    workspace.insertBefore(elemento, workspace.children[targetIndex]);
+    workspace.insertBefore(elemento, codigoHTML[targetIndex + 1] || null);
   }
 
   const allBlocks = workspace.querySelectorAll('.pb-wblock');
@@ -213,7 +213,7 @@ function pushToken(token, index) {
   } else {
     codigo.splice(targetIndex, 0, token);
     codigoHTML.splice(targetIndex, 0, elemento);
-    workspace.insertBefore(elemento, workspace.children[targetIndex]);
+    workspace.insertBefore(elemento, codigoHTML[targetIndex + 1] || null);
   }
 
   // indexa novamente todos os elementos do DOM após a inserção
