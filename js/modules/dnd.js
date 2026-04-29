@@ -319,27 +319,41 @@ function wireDnD() {
             ? ev.target.closest('.pb-wblock')
             : null;
         const els = ws.querySelectorAll('.pb-wblock');
-        for (let i = 0; i < els.length; i++)
-          els[i].classList.remove('pb-drop-target');
-        if (t) t.classList.add('pb-drop-target');
+        for (let i = 0; i < els.length; i++) {
+          els[i].classList.remove('pb-drop-target', 'pb-drop-before', 'pb-drop-after');
+        }
+        if (t) {
+          const rect = t.getBoundingClientRect();
+          const relY = ev.clientY - rect.top;
+          if (relY < rect.height / 2) {
+            t.classList.add('pb-drop-before');
+          } else {
+            t.classList.add('pb-drop-after');
+          }
+        }
       }
     });
 
     ws.addEventListener('dragleave', function () {
       const els = ws.querySelectorAll('.pb-wblock');
-      for (let i = 0; i < els.length; i++)
-        els[i].classList.remove('pb-drop-target');
+      for (let i = 0; i < els.length; i++) {
+        els[i].classList.remove('pb-drop-target', 'pb-drop-before', 'pb-drop-after');
+      }
     });
 
     ws.addEventListener('drop', function (ev) {
       ev.preventDefault();
       const targetElement =
         ev.target && ev.target.closest ? ev.target.closest('.pb-wblock') : null;
-      if (targetElement) targetElement.classList.remove('pb-drop-target');
-
-      const toIndex = targetElement
-        ? parseInt(targetElement.dataset.idx, 10)
-        : codigo.length;
+      
+      let toIndex = codigo.length;
+      if (targetElement) {
+        toIndex = parseInt(targetElement.dataset.idx, 10);
+        if (targetElement.classList.contains('pb-drop-after')) {
+          toIndex += 1;
+        }
+        targetElement.classList.remove('pb-drop-target', 'pb-drop-before', 'pb-drop-after');
+      }
 
       if (_dragFromIdx !== null) {
         const from = _dragFromIdx;
@@ -355,7 +369,7 @@ function wireDnD() {
           codigoHTML.splice(effectiveTo, 0, itemH);
 
           const elementToMove = itemH;
-          const referenceNode = ws.children[effectiveTo];
+          const referenceNode = codigoHTML[effectiveTo + 1] || null;
           ws.insertBefore(elementToMove, referenceNode);
 
           const allBlocks = ws.querySelectorAll('.pb-wblock');
@@ -376,8 +390,9 @@ function wireDnD() {
       _dragFromIdx = null;
       _dragFromSidebarId = null;
       const els = ws.querySelectorAll('.pb-wblock');
-      for (let i = 0; i < els.length; i++)
-        els[i].classList.remove('pb-drop-target');
+      for (let i = 0; i < els.length; i++) {
+        els[i].classList.remove('pb-drop-target', 'pb-drop-before', 'pb-drop-after');
+      }
     });
 
     ws._pbDndWired = true;
